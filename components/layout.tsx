@@ -3,17 +3,22 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Tatiana'
-export const siteTitle = 'Shitpost Archive'
+const name = 'Rhymes for Trying Times'
+export const siteTitle = 'Rhymes for Trying Times'
 
-export default function Layout({ children, home }) {
+export default function Layout({
+  children,
+  home
+}: {
+  children: React.ReactNode
+  home?: boolean
+}) {
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="An archive of all of my shitposts, for better or worse"
+          content="A collection of words written in bar countertops, train tables, drafty hotel beds"
         />
         <meta
           property="og:image"
@@ -23,33 +28,20 @@ export default function Layout({ children, home }) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Source+Serif+Pro&display=swap" rel="stylesheet" />
       </Head>
       <header className={styles.header}>
         {home ? (
           <>
-            <img
-              src="/images/profile.jpg"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={name}
-            />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
           <>
-            <Link href="/">
-              <a>
-                <img
-                  src="/images/profile.jpg"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
+            <span className={utilStyles.headingLg}>
               <Link href="/">
                 <a className={utilStyles.colorInherit}>{name}</a>
               </Link>
-            </h2>
+            </span>
           </>
         )}
       </header>
@@ -57,7 +49,7 @@ export default function Layout({ children, home }) {
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
-            <a>← Back to home</a>
+            <a>← </a>
           </Link>
         </div>
       )}
